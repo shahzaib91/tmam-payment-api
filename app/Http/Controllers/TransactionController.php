@@ -15,7 +15,11 @@ class TransactionController extends GenericController
      */
     public function index($merchant_id)
     {
-        //
+        $txs = Transaction::where('merchant_code', $merchant_id)->with('merchant')->get();
+        if($txs->count()>0){
+            return $this->respondJson(200, 'success', true, $txs);
+        }
+        return $this->respondJson(404, 'not_found', false);
     }
 
     /**
