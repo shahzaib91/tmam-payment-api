@@ -29,8 +29,7 @@ class WebhookSubscribeRequest extends FormRequest
     {
         return [
             'merchant_id' => 'required|numeric|exists:users,id',
-            'webhook_url' => 'required|url',
-            'webhook_secret' => 'required'
+            'webhook_url' => 'required|url'
         ];
     }
 
@@ -64,8 +63,7 @@ class WebhookSubscribeRequest extends FormRequest
             'merchant_id.numeric' => 'Merchant ID must be a numeric value.',
             'merchant_id.exists' => 'Merchant ID does not exists.',
             'webhook_url.required' => 'Webhook url is required.',
-            'webhook_url.url' => 'Webhook url format is not valid.',
-            'webhook_secret.required' => 'Webhook secret salt is required.'
+            'webhook_url.url' => 'Webhook url format is not valid.'
         ];
     }
 }
