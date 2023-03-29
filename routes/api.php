@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => 'v1'], function() {
+
+    Route::group(['prefix' => 'webhook'], function() {
+        Route::put('subscribe', 'WebhookController@subscribe');
+        Route::put('state', 'WebhookController@state');
+    });
+
+    Route::group(['prefix' => 'transaction'], function() {
+        Route::get('list/{merchantId}', 'TransactionController@index');
+        Route::post('create', 'TransactionController@store');
+    });
+
 });
