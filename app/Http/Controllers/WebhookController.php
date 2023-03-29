@@ -17,7 +17,6 @@ class WebhookController extends GenericController
     public function subscribe(WebhookSubscribeRequest $request)
     {
         $user = User::find($request->merchant_id);
-        $user->webhook_secret = $request->webhook_secret;
         $user->webhook_url = $request->webhook_url;
         $user->webhook_state = 'e'; // always set webhook state enabled when added
         $user->save();
