@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Transaction;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 class GenericController extends Controller
 {
@@ -48,27 +49,34 @@ class GenericController extends Controller
                 "transaction_datetime" => $tx->created_at,
             ];
 
-            // make and post to client
-            $client = new Client();
-            $response = $client->post(
-                $tx->merchant->webhook_url, [
-                    'headers' => [
-                        'Content-Type' => 'application/json',
-                        'Accept' => 'application/json',
-                        'X-Signature' => hash_hmac('sha256', json_encode($payload), $tx->merchant->webhook_secret),
-                    ],
-                    'json' => $payload
-                ]
-            );
+            try {
 
-            // display response
-            // For debugging purpose only
-            dd(json_decode($response->getBody()));
+                // make and post to client
+                $client = new Client();
+                $response = $client->post(
+                    $tx->merchant->webhook_url, [
+                        'headers' => [
+                            'Content-Type' => 'application/json',
+                            'Accept' => 'application/json',
+                            'X-Signature' => hash_hmac('sha256', json_encode($payload), $tx->merchant->webhook_secret),
+                        ],
+                        'json' => $payload
+                    ]
+                );
 
-            // ToDo with the response here
-            // Following ways:
-            // 1- Parse and read response and set flag with the record
-            // 2- Logging webhook response data
+                // display response
+                // For debugging purpose only
+                dd(json_decode($response->getBody()));
+
+                // ToDo with the response here
+                // Following ways:
+                // 1- Parse and read response and set flag with the record
+                // 2- Logging webhook response data
+
+            } catch(RequestException $ex) {
+                dd($ex->getMessage());
+            }
+
         }
     }
 }
