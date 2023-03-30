@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "dc8cbc99-353d-42bf-82a1-87ff00206e68",
+		"name": "03-Webhook Post End-point Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24381560"
+	},
+	"item": [
+		{
+			"name": "Test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"transaction_id\": 6600004,\r\n    \"token\": 520801043,\r\n    \"transaction_type\": \"d\",\r\n    \"transaction_status\": 1,\r\n    \"merchant_code\": 1000,\r\n    \"merchant_name\": \"Tmam.io\",\r\n    \"merchant_country\": \"UAE\",\r\n    \"merchant_currency\": \"AED\",\r\n    \"amount\": -25,\r\n    \"transaction_currency\": \"USD\",\r\n    \"transaction_amount\": -6.81,\r\n    \"auth_code\": \"686830\",\r\n    \"transaction_datetime\": \"2023-03-30 10:03:41\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/tmam-expense-system/api/webhook/sync-data",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tmam-expense-system",
+						"api",
+						"webhook",
+						"sync-data"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

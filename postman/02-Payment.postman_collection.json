@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "019a188d-4d26-4c45-af6b-fd15a7d017da",
+		"name": "02-Payment",
+		"description": "This collection serves two core purposes:\n\n1- Payment transaction simulation which will be received by web hook at EMS (Expense Management System) end and from their it will be synced with the accounting software in real time.\n\n2- List all the transactions created inside payment system against each merchant.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24381560"
+	},
+	"item": [
+		{
+			"name": "Pay",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": 520801043,\r\n    \"transaction_type\": \"d\",\r\n    \"transaction_status\": 1,\r\n    \"merchant_code\": 1000,\r\n    \"amount\": -25,\r\n    \"transaction_currency\": \"USD\",\r\n    \"transaction_amount\": -6.81,\r\n    \"auth_code\": \"686830\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}transaction/create",
+					"host": [
+						"{{base_url}}transaction"
+					],
+					"path": [
+						"create"
+					]
+				},
+				"description": "This end-point will create dummy transaction in payment system and trigger the web hook upon successful creation."
+			},
+			"response": []
+		},
+		{
+			"name": "List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": 520801043,\r\n    \"transaction_type\": \"d\",\r\n    \"transaction_status\": 1,\r\n    \"merchant_code\": 1000,\r\n    \"amount\": -25,\r\n    \"transaction_currency\": \"USD\",\r\n    \"transaction_amount\": -6.81,\r\n    \"auth_code\": \"686830\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}transaction/list/1000",
+					"host": [
+						"{{base_url}}transaction"
+					],
+					"path": [
+						"list",
+						"1000"
+					]
+				},
+				"description": "This end-point is to list merchant's transations."
+			},
+			"response": []
+		}
+	]
+}

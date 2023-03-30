@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "76ea9138-a6e4-4327-9354-655779cbd4f9",
+		"name": "01-Webhook",
+		"description": "This collection is created to subscribe web hook end-point and change the status of web hook e.g. if enabled data will be synced and if disabled web hook event will be ignored.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24381560"
+	},
+	"item": [
+		{
+			"name": "Subscribe",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"merchant_id\": \"1000\",\r\n    \"webhook_url\": \"http://localhost/tmam-expense-system/api/webhook/sync-data\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}webhook/subscribe",
+					"host": [
+						"{{base_url}}webhook"
+					],
+					"path": [
+						"subscribe"
+					]
+				},
+				"description": "To subscribe the web hook in payment system use this end-point."
+			},
+			"response": []
+		},
+		{
+			"name": "ChangeState",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"merchant_id\": \"1000\",\r\n    \"webhook_state\": \"e\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}webhook/state",
+					"host": [
+						"{{base_url}}webhook"
+					],
+					"path": [
+						"state"
+					]
+				},
+				"description": "To change the state of web hook event e.g. e = enabled or d = disabled use this end-point."
+			},
+			"response": []
+		}
+	]
+}
