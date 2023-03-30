@@ -13,7 +13,9 @@ Purpose of this project is to demonstrate WebHook subscription and Payments simu
 - Fork the repository using this command: <code>git clone https://github.com/shahzaib91/tmam-payment-api.git</code>
 - Run command <code>composer install</code> while you are inside the root folder.
 - Configure .env file and setup database connection.
+- Run command: <code>php artisan key:generate</code> to generate encryption key.
 - Run command: <code>php artisan migrate</code> to generate database tables.
+- Run command: <code>php artisan db:seed</code> to seed test merchant data.
 - Access postman requests to configure web hook via subscription api provided inside postman.
 - Access payment API provided inside postman.
 - Optionally access transactions list api to check if payment transactions are created inside payment database.
