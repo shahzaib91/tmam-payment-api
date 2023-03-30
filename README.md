@@ -20,6 +20,8 @@ Purpose of this project is to demonstrate WebHook subscription and Payments simu
 - Access payment API provided inside postman.
 - Optionally access transactions list api to check if payment transactions are created inside payment database.
 
+Important: If running both expense and payment setup in same local environment you might see merchant_name column error in postman this can happen because of putenv() leakage. Run the command given below and to read more about the issue refer to the provided link.
+
 ## putenv() Leakage
 
 You may face the problem discussed here: <a href="https://stackoverflow.com/questions/35179397/laravel-environment-variables-leaking-between-applications-when-they-call-each-o">Laravel environment variables leaking between applications when they call each other through GuzzleHttp</a>
