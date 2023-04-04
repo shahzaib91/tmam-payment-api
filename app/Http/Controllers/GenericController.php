@@ -66,7 +66,7 @@ class GenericController extends Controller
 
                 // display response
                 // For debugging purpose only
-                dd(json_decode($response->getBody()));
+                echo $response->getBody();
 
                 // ToDo with the response here
                 // Following ways:
